@@ -9,7 +9,7 @@ int main()
 	int  x;
 	double result;
 	printf("n & x input: ");
-	scanf_s("%d %d", &n, &x);
+	scanf("%d %d", &n, &x);
 	int *p1 = &n,*p2=&x;
 	result=combination(&n,&x);
 	printf("%f\n",result);
