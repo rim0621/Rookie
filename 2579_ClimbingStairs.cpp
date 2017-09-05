@@ -27,7 +27,7 @@ int main()
 		}
 		else if(i==3)	//시작포인트를 0으로 줘서 없어도 가능
 		{
-			tmp=max(stairs[i-1]+stairs[i],stairs[i-2]+stairs[i]);
+			tmp=max(stairs[i-1]+stairs[i],score[i-2]+stairs[i]);
 			score.push_back(tmp);
 		}
 		else
