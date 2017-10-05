@@ -1,42 +1,64 @@
-// (x2-x1)^2+(y2-y1)^2
-
 #include<bits/stdc++.h>
 using namespace std;
+
+/*
+2 0
+1 4
+3 3
+*/
+
+
 struct Point{
 	int x,y;
 };
-
-int f(Point &a, Point &b)
+bool f(Point const &a,Point const &b)
 {
-	return pow(b.x-a.x,2)+pow(b.y-a.y,2);
+	if(a.x!=b.x)
+		return a.x < b.x;
+	else
+		return a.y<b.y;
 }
-bool Less(Point const &a, Point const &b)
+bool f1(Point const &a,Point const &b)
 {
-	if(a.x==b.x)
-	{
-		return a.y>b.y;
-	}
-	return a.x>b.x;
-
+        if(a.y!=b.y)
+                return a.y < b.y;
+        else
+                return a.x<b.x;
 }
-Point p[100002];
+
+
+Point p[100004];
+long long d[100004];
 int main()
 {
-	int tc,answer;
-	scanf("%d",&tc);
-	for(int n=0;n<tc;++n)
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
 	{
-		scanf("%d %d",&p[n].x,&p[n].y);
+		scanf("%d %d",&p[i].x,&p[i].y);
 	}
-
-	sort(p,p+tc,Less);
-	answer=f(p[0],p[1]);
-	for(int n=1;n<tc-1;n++)
-	{
-		answer=min(answer,f(p[n],p[n+1]));
-	}
+	sort(p,p+n,f);
+	int tmp1,tmp2;
+	for(int i=0;i<n-1;i++)
+	{	
+		tmp1=p[i+1].x-p[i].x;
+		tmp2=p[i+1].y-p[i].y;
+		d[i]=pow(tmp1,2)+pow(tmp2,2);
+	}	
+	sort(d,d+n-1);
+	long long m=d[0];
 	
-	cout<<answer<<endl;
 
+	sort(p,p+n,f1);
+        for(int i=0;i<n-1;i++)
+        {
+                tmp1=p[i+1].y-p[i].y;
+                tmp2=p[i+1].x-p[i].x;
+                d[i]=pow(tmp1,2)+pow(tmp2,2);
+        }
+	sort(d,d+n-1);
+	m=min(m,d[0]);
+	cout<<m<<endl;
 	return 0;
+
 }
