@@ -1,2 +1,1 @@
-BeakJoon site. 
-algorithm practice 
+# BeakJoon Algorithm Practice 
