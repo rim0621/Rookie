@@ -1,3 +1,5 @@
+//받은 배열중 1을 만들면 남어진 계산
+
 #include<bits/stdc++.h>
 using namespace std;
 int a[2003];
