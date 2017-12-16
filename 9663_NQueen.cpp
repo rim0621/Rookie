@@ -13,7 +13,7 @@ int main()
 	scanf("%d",&N);
 	for(int i=0;i<N;i++)
 	{
-		col[0]=i;	//i=row;
+		col[0]=i;	//i=col;
 		findNqueen(0);	
 	}
 	
