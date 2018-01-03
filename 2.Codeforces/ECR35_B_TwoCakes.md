@@ -1,4 +1,4 @@
-# Educational Codeforces Round 35 B.Two Cakes
+# Educational Codeforces Round 35/ B.Two Cakes
 * [문제 링크](http://codeforces.com/problemset/problem/911/B)
 * [코드 링크](https://github.com/rim0621/Rookie/tree/master/2.Codeforces)
 * [블로그 풀이](http://rim0621.tistory.com/category/SW/Algorithm)
