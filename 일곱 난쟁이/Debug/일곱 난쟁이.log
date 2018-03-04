@@ -1,5 +1,0 @@
-﻿  dwarf.c
-c:\users\임중현\desktop\임중현\c_c++_coding\일곱 난쟁이\dwarf.c(14): warning C4047: '함수': 'int *'의 간접 참조 수준이 'int (*)[9]'과(와) 다릅니다.
-c:\users\임중현\desktop\임중현\c_c++_coding\일곱 난쟁이\dwarf.c(14): warning C4024: 'finddwarf': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-c:\users\임중현\desktop\임중현\c_c++_coding\일곱 난쟁이\dwarf.c(54): warning C4098: 'finddwarf': 'void' 함수에서 값을 반환하고 있습니다.
-  일곱 난쟁이.vcxproj -> C:\Users\임중현\Desktop\임중현\C_C++_Coding\일곱 난쟁이\Debug\일곱 난쟁이.exe
