@@ -32,23 +32,10 @@ int main(int argc, char** argv)
 		}
 		long long sum=0;
 		sort(clothes+1,clothes+n+1,greater<int>());
-		for(int i=1;i<=n;)
+		for(int i=1;i<=n;i++)
 		{
-			sum+=clothes[i+0];
-			sum+=clothes[i+1];
-//			for(int j=i;j<i+3;j++)
-//			{
-//				cout<<clothes[j]<<" ";
-//			}
-//			cout<<endl;
-			i+=3;
-			if(i+3>n)
-			{
-//				cout<<"d"<<clothes[i+0]<<" "<<clothes[i+1]<<endl;
-				sum+=clothes[i+0];
-				sum+=clothes[i+1];
-				break;
-			}
+			if(i%3!=0)
+				sum+=clothes[i];
 		}
 
 		cout<<"#"<<test_case<<" "<<sum<<endl;
