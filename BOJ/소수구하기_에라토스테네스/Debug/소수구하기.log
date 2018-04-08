@@ -1,0 +1,3 @@
+﻿  main.c
+c:\users\임중현\desktop\임중현\c_c++_coding\소수구하기\main.c(8): warning C4013: 'malloc'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  소수구하기.vcxproj -> C:\Users\임중현\Desktop\임중현\C_C++_Coding\소수구하기\Debug\소수구하기.exe
