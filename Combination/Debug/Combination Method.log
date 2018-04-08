@@ -1,3 +1,0 @@
-﻿  Combination.cpp
-c:\users\임중현\desktop\임중현\c_c++_coding\0.combination 조합(작은수만)\combination.cpp(47): warning C4244: 'return': 'unsigned __int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Combination Method.vcxproj -> C:\Users\임중현\Desktop\임중현\C_C++_Coding\0.Combination 조합(작은수만)\Debug\Combination Method.exe

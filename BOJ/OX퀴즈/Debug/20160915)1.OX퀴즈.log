@@ -1,3 +1,0 @@
-﻿  main.c
-c:\users\임중현\desktop\임중현\c_c++_coding\20160915)1.ox퀴즈\main.c(12): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-  20160915)1.OX퀴즈.vcxproj -> C:\Users\임중현\Desktop\임중현\C_C++_Coding\20160915)1.OX퀴즈\Debug\20160915)1.OX퀴즈.exe

@@ -1,4 +1,0 @@
-﻿  SortingNumber.c
-c:\users\임중현\desktop\임중현\c_c++_coding\수정렬하기\sortingnumber.c(7): warning C4013: 'malloc'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-c:\users\임중현\desktop\임중현\c_c++_coding\수정렬하기\sortingnumber.c(31): warning C4013: 'free'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-  수정렬하기.vcxproj -> C:\Users\임중현\Desktop\임중현\C_C++_Coding\수정렬하기\Debug\수정렬하기.exe
