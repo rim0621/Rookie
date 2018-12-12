@@ -10,16 +10,16 @@ struct Node{
 Node *makeNode(char data)
 {
 	Node *node=(Node *)malloc(sizeof(Node));
-	node->left='.';
-	node->right='.';
+	node->left= NULL;
+	node->right=NULL;
 
 	node->data=data;
 
 	return node;
 }
-void inOrder(node *root)
+void inOrder(Node *root)
 {
-	if(root=='.')
+	if(root->data=='.')
 		return ;
 	else{
 		inOrder(root->left);
@@ -27,33 +27,25 @@ void inOrder(node *root)
 		inOrder(root->right);
 	}
 }
-void preOrder(node *root)
+void preOrder(Node *root)
 {
-	if(root='.')
+	if(root->data=='.')
 		return ;
 	else{
 		printf("%c ",root->data);
-		preOrder(root->left);
-		preOdrer(root->right);
-	}
-}
-void postOrder(node *root)
-{
-	if(root='.')
-		return ;
-	else{
 		preOrder(root->left);
 		preOrder(root->right);
-		printf("%c ",root->data);
 	}
 }
-void insert(Node **root,char data)
+void postOrder(Node *root)
 {
-	if(*root!='.')
-		
-	if(*root=='.')
-		*root=makeNode(data);
-	else if((*root)->data
+	if(root->data=='.')
+		return ;
+	else{
+		postOrder(root->left);
+		postOrder(root->right);
+		printf("%c ",root->data);
+	}
 }
 
 int main()
@@ -69,4 +61,8 @@ int main()
 		root->left=makeNode(leftData);
 		root->right=makeNode(rightData);
 	}
+	preOrder(root);
+	inOrder(root);
+	postOrder(root);
+	return 0;
 }
