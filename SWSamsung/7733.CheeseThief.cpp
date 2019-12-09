@@ -38,7 +38,7 @@ int find_chunk(int x, int y,char str)
 	{
 		return 0;
 	}
-	bitmap[x][y]=str2
+	bitmap[x][y]=str;
 	for(int i=0;i<4;i++)
 	{
 		find_chunk(x+dx[i],y+dy[i],str);
@@ -100,7 +100,7 @@ int main(int argc, char** argv)
 			
 			for(int x=1;x<=n;x++){
 				for(int y=1;y<=n;y++){
-						count+=find_chunk(x,y,'O','T',day);
+						count+=find_chunk(x,y,'O');
 				}
 			}
 			cout<<"cnt : "<<count<<endl;
