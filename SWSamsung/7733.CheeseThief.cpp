@@ -28,20 +28,20 @@ int get_day(int day)
 	}
 	return -1;
 }
-int find_chunk(int x, int y, char str1, char str2,int day)
+int find_chunk(int x, int y,char str)
 {
 	if(bitmap[x][y]=='x')
 	{
 		return 0;
 	}
-	if(x > n || x < 1 || y > n || y < 1 || bitmap[x][y] == str2)
+	if(x > n || x < 1 || y > n || y < 1 || bitmap[x][y] == str)
 	{
 		return 0;
 	}
-	bitmap[x][y]=str2;
+	bitmap[x][y]=str2
 	for(int i=0;i<4;i++)
 	{
-		find_chunk(x+dx[i],y+dy[i],str1,str2,day);
+		find_chunk(x+dx[i],y+dy[i],str);
 	}
 
 	return 1;
@@ -61,8 +61,6 @@ int main(int argc, char** argv)
 		int count=0;
 		int x=0;
 		int y=0;
-		int *p_x=&x;
-		int *p_y=&y;
 		for(int i=1;i<=n;i++)
 		{
 			for(int j=1;j<=n;j++)
@@ -102,11 +100,7 @@ int main(int argc, char** argv)
 			
 			for(int x=1;x<=n;x++){
 				for(int y=1;y<=n;y++){
-					if(test_case%2==1){
 						count+=find_chunk(x,y,'O','T',day);
-					}else{
-						count+=find_chunk(x,y,'T','O',day);	
-					}
 				}
 			}
 			cout<<"cnt : "<<count<<endl;
