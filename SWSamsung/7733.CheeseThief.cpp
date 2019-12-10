@@ -55,6 +55,7 @@ int main(int argc, char** argv)
 	for(test_case = 1; test_case <= T; ++test_case)
 	{
 		cin >> n;
+		memset(cheese,0,sizeof(int)*SIZE*SIZE);
 		int max_cnt=1;
 		int day=0;
 		int count=0;
@@ -101,7 +102,7 @@ int main(int argc, char** argv)
 
 			for(int x=1;x<=n;x++){
 				for(int y=1;y<=n;y++){
-					count+=find_chunk(x,y,'O');
+					count+=find_chunk(x,y,'o');
 				}
 			}
 			cout<<"cnt : "<<count<<endl;
