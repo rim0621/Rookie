@@ -7,13 +7,15 @@
 
 #include<bits/stdc++.h>
 
-#define SIZE 102
+#define SIZE		102
+#define MAX_DAYS	102
+
 using namespace std;
 int cheese[SIZE][SIZE];
 int bitmap[SIZE][SIZE];
 int dx[4]={0,-1,1,0};
 int dy[4]={1,0,0,-1};
-int days[102];
+int days[MAX_DAYS];
 int n;
 int max_day;
 int get_day(int day)
@@ -71,8 +73,15 @@ int main(int argc, char** argv)
 				max_day=max(max_day,cheese[i][j]);
 			}
 		}
+		//day=find_first_bit(&days,sizeof(int)*MAX_DAYS);
 		while(1){
 			day=get_day(day);
+
+			if(day==max_day)
+			{
+				break;
+			}
+
 			for(int x=1;x<=n;x++)
 			{
 				for(int y=1;y<=n;y++)
@@ -85,7 +94,7 @@ int main(int argc, char** argv)
 			}
 			memcpy(bitmap,cheese,sizeof(int)*SIZE*SIZE);
 			count=0;
-			cout<<"day : "<<day<<endl;
+		/*	cout<<"day : "<<day<<endl;
 			for(int i=1;i<=n;i++)
 			{
 				for(int j=1;j<=n;j++)
@@ -95,20 +104,17 @@ int main(int argc, char** argv)
 				cout<<endl;
 			}
 
-			if(day==max_day)
-			{
-				break;
-			}
-
+*/
 			for(int x=1;x<=n;x++){
 				for(int y=1;y<=n;y++){
 					count+=find_chunk(x,y,'o');
 				}
 			}
-			cout<<"cnt : "<<count<<endl;
-			cout<<"-------------------------------------------------"<<endl;
+//			cout<<"cnt : "<<count<<endl;
+//			cout<<"-------------------------------------------------"<<endl;
 
 			max_cnt=max(max_cnt,count);
+			//day=find_next_bit(&days,sizeof(int)*MAX_DAYS,day);
 
 		}
 		cout<<"#"<<test_case<<" "<<max_cnt<<endl;
