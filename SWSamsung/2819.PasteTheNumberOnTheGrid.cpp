@@ -23,7 +23,7 @@ void paste_number(int x,int y,int val,int count)
 		b.push_back(val);
 		return ;
 	}
-	if(x<0 && x>=MAX_LEN && y<0 && y>=MAX_LEN)
+	if(x<0 || x>=MAX_LEN || y<0 || y>=MAX_LEN)
 	{
 		return ;
 	}
@@ -94,8 +94,11 @@ int main()
 
 		sort(b.begin(), b.end());
 		b.erase(unique(b.begin(), b.end()),b.end());
-
-		cout << "#"<<tc<<" "<<b.size()<<endl;
+/*		for(int i=0;i<b.size();i++)
+		{
+			cout<<b[i]<<endl;
+		}
+*/		cout << "#"<<tc<<" "<<b.size()<<endl;
 	}
 	
 
