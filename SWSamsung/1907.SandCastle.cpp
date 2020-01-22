@@ -25,12 +25,12 @@ queue<Position> q;
 int max_x;
 int max_y;
 
-void find_weak(int x,int y)
+void find_weak(int x,int y,int cnt)
 {
 	Position p;
 	int next_x, next_y;
 	int current_val=sand_map[x][y];
-	if (current_val==9)
+	if (current_val == 9 || current_val == -2)
 	{
 		return ;
 	}
@@ -43,14 +43,14 @@ void find_weak(int x,int y)
 		if(next_x<0 || next_y<0 || next_x>=max_x || next_y>=max_y) // overrange
 			continue;
 		else{
-			if(sand_map[next_x][next_y]==-1)
+			if(sand_map[next_x][next_y]==-2)
 				current_val-=1;
 		}
 		if (current_val==0)
 		{
 			p.x=x;
 			p.y=y;
-			p.val=sand_map[x][y];
+			p.val=cnt+1;
 			q.push(p);
 			return ;
 		}
@@ -70,24 +70,26 @@ int main()
 		int result=0;
 		cin >> max_x;
 		cin >> max_y;
-		Position c_p;
+		Position c_p={0,0,0};
 
 		for(int x=0;x<max_x;x++)
 		{
+			string s;
+			cin >> s;
 			for(int y=0;y<max_y;y++)
 			{
-				cin >> sand_map[x][y];
+				sand_map[x][y]=s[y]-'1'+1;
 			}
 		}
+
 		//search able delete
 		for(int x=0;x<max_x;x++)
 		{
 			for(int y=0;y<max_y;y++)
 			{
-				find_weak(x,y);
+				find_weak(x,y,0);
 			}
 		}
-		result+=1;
 		
 		//queue check
 		while(!q.empty()){
@@ -96,32 +98,36 @@ int main()
 			q.pop();
 			int x=c_p.x;
 			int y=c_p.y;
-			sand_map[x][y]=-1;
+			int cnt=c_p.val;
+			sand_map[x][y]=-2;
+
+			//debug
+/*			cout<<"cnt:"<<cnt<<"/Qsize:"<<q.size()<<"============================="<<endl;
+			cout<<x<<"/"<<y<<endl;
+			for(int x_v=0;x_v<max_x;x_v++)
+			{
+				for(int y_v=0;y_v<max_y;y_v++)
+				{
+					printf("%d\t",sand_map[x_v][y_v]);
+				}
+				printf("\n");
+			}
+*/
 			for(int i=0;i<8;i++){
 				int next_x=x+dx[i];
 				int next_y=y+dy[i];
 				if(next_x<0 || next_y<0 || next_x>=max_x || next_y>=max_y) // overrange
 					continue;
 				else
-					find_weak(next_x,next_y);
-			}
-			result+=1;
-
-			//search able delete
-			for(int x=0;x<max_x;x++)
-			{
-				for(int y=0;y<max_y;y++)
-				{
-					find_weak(x,y);
-				}
+					find_weak(next_x,next_y,cnt);
 			}
 
-
-
+			result=cnt;
 		}
 
-		cout<<result<<endl;
-
+		cout<<"#"<<num<<" "<<result<<endl;
+		//for next tc
+		memset(sand_map,0,sizeof(int)*1000*1000);
 	}
 	return 0;
 }
