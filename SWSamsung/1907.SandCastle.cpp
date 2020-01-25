@@ -30,7 +30,7 @@ void find_weak(int x,int y,int cnt)
 	Position p;
 	int next_x, next_y;
 	int current_val=sand_map[x][y];
-	if (current_val == 9 || current_val == -2)
+	if (current_val == 9 || current_val == -2 || current_val == -1)
 	{
 		return ;
 	}
@@ -52,6 +52,7 @@ void find_weak(int x,int y,int cnt)
 			p.y=y;
 			p.val=cnt+1;
 			q.push(p);
+			sand_map[x][y]=-1;  //aleady in the queue
 			return ;
 		}
 
