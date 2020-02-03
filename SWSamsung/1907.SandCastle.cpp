@@ -40,9 +40,12 @@ void find_weak(int x,int y,int cnt)
 			if(next_x<0 || next_y<0 || next_x>=max_x || next_y>=max_y) // overrange
 				continue;
 			else{
+				if(sand_map[next_x][next_y]==-2)
+					continue;
 				count_sand[next_x][next_y]++;
 			}
-			if (count_sand[next_x][next_y]>=sand_map[next_x][next_y] && done[next_x][next_y]==0)
+
+			if (count_sand[next_x][next_y]>=sand_map[next_x][next_y] && done[next_x][next_y]!=1)
 			{
 				p.x=x;
 				p.y=y;
