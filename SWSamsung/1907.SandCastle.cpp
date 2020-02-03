@@ -40,20 +40,18 @@ void find_weak(int x,int y,int cnt)
 			if(next_x<0 || next_y<0 || next_x>=max_x || next_y>=max_y) // overrange
 				continue;
 			else{
-				if(sand_map[next_x][next_y]==-2)
+				if(sand_map[next_x][next_y] > -2){
 					count_sand[next_x][next_y]++;
+					if (count_sand[next_x][next_y]>=sand_map[next_x][next_y] && done[next_x][next_y]!=1)
+					{
+						p.x=next_x;
+						p.y=next_y;
+						p.val=cnt+1;
+						q.push(p);
+						done[next_x][next_y]=1;
+					}
+				}
 			}
-
-			if (count_sand[next_x][next_y]>=sand_map[next_x][next_y] && done[next_x][next_y]!=1)
-			{
-				p.x=x;
-				p.y=y;
-				p.val=cnt+1;
-				q.push(p);
-				done[next_x][next_y]=1;
-				return ;
-			}
-
 		}
 	}
 	return ;
@@ -101,16 +99,16 @@ int main()
 			sand_map[x][y]=-2;
 
 			//debug
-			cout<<"cnt:"<<cnt<<"/Qsize:"<<q.size()<<"============================="<<endl;
-			cout<<x<<"/"<<y<<endl;
-			for(int x_v=0;x_v<max_x;x_v++)
-			{
-				for(int y_v=0;y_v<max_y;y_v++)
-				{
-					printf("%d\t",sand_map[x_v][y_v]);
-				}
-				printf("\n");
-			}
+			// cout<<"cnt:"<<cnt<<"/Qsize:"<<q.size()<<"============================="<<endl;
+			// cout<<x<<"/"<<y<<endl;
+			// for(int x_v=0;x_v<max_x;x_v++)
+			// {
+			// 	for(int y_v=0;y_v<max_y;y_v++)
+			// 	{
+			// 		printf("%d\t",sand_map[x_v][y_v]);
+			// 	}
+			// 	printf("\n");
+			// }
 
 			find_weak(x,y,cnt);
 
