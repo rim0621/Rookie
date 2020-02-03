@@ -13,13 +13,13 @@ struct Position{
 	int x;
 	int y;
 	int val;
-
 };
 
 int dx[]={-1, -1,  0,  1, 1, 1, -1, 0};
 int dy[]={-1,  0, -1, -1, 1, 0,  1, 1};
-
+int done[1000][1000];
 int sand_map[1000][1000];
+int count_sand[1000][1000];
 queue<Position> q;
 
 int max_x;
@@ -30,34 +30,30 @@ void find_weak(int x,int y,int cnt)
 	Position p;
 	int next_x, next_y;
 	int current_val=sand_map[x][y];
-	if (current_val == 9 || current_val == -2 || current_val == -1)
+	if (current_val == -2)
 	{
-		return ;
-	}
-
-	for(int i=0;i<8;i++)
-	{
-		next_x=x+dx[i];
-		next_y=y+dy[i];
-
-		if(next_x<0 || next_y<0 || next_x>=max_x || next_y>=max_y) // overrange
-			continue;
-		else{
-			if(sand_map[next_x][next_y]==-2)
-				current_val-=1;
-		}
-		if (current_val==0)
+		for(int i=0;i<8;i++)
 		{
-			p.x=x;
-			p.y=y;
-			p.val=cnt+1;
-			q.push(p);
-			sand_map[x][y]=-1;  //aleady in the queue
-			return ;
+			next_x=x+dx[i];
+			next_y=y+dy[i];
+
+			if(next_x<0 || next_y<0 || next_x>=max_x || next_y>=max_y) // overrange
+				continue;
+			else{
+				count_sand[next_x][next_y]++;
+			}
+			if (count_sand[next_x][next_y]>=sand_map[next_x][next_y] && done[next_x][next_y]==0)
+			{
+				p.x=x;
+				p.y=y;
+				p.val=cnt+1;
+				q.push(p);
+				done[next_x][next_y]=1;
+				return ;
+			}
+
 		}
-
 	}
-
 	return ;
 }
 
@@ -103,7 +99,7 @@ int main()
 			sand_map[x][y]=-2;
 
 			//debug
-/*			cout<<"cnt:"<<cnt<<"/Qsize:"<<q.size()<<"============================="<<endl;
+			cout<<"cnt:"<<cnt<<"/Qsize:"<<q.size()<<"============================="<<endl;
 			cout<<x<<"/"<<y<<endl;
 			for(int x_v=0;x_v<max_x;x_v++)
 			{
@@ -113,15 +109,9 @@ int main()
 				}
 				printf("\n");
 			}
-*/
-			for(int i=0;i<8;i++){
-				int next_x=x+dx[i];
-				int next_y=y+dy[i];
-				if(next_x<0 || next_y<0 || next_x>=max_x || next_y>=max_y) // overrange
-					continue;
-				else
-					find_weak(next_x,next_y,cnt);
-			}
+
+			find_weak(x,y,cnt);
+
 
 			result=cnt;
 		}
@@ -129,6 +119,8 @@ int main()
 		cout<<"#"<<num<<" "<<result<<endl;
 		//for next tc
 		memset(sand_map,0,sizeof(int)*1000*1000);
+		memset(count_sand,0,sizeof(int)*1000*1000);
+		memset(done,0,sizeof(int)*1000*1000);		
 	}
 	return 0;
 }
