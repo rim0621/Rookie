@@ -41,8 +41,7 @@ void find_weak(int x,int y,int cnt)
 				continue;
 			else{
 				if(sand_map[next_x][next_y]==-2)
-					continue;
-				count_sand[next_x][next_y]++;
+					count_sand[next_x][next_y]++;
 			}
 
 			if (count_sand[next_x][next_y]>=sand_map[next_x][next_y] && done[next_x][next_y]!=1)
